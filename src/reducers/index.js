@@ -17,11 +17,7 @@ function indexStore(state = initialState, action){
             };
         case SUCCESS_GET_ACCORDION:
             let contentClone = JSON.parse(JSON.stringify(action.content));
-    
-            contentClone.forEach(item => {
-                item.collapsed = true;
-            });
-    
+            
             return {
                 ...state,
                 content: contentClone,

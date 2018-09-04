@@ -1,28 +1,26 @@
-.App {
+.Accordion {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
+.Accordion-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
 }
 
-.App-title {
+.Accordion-title {
   font-size: 1.5em;
 }
 
-.App-intro {
+.Accordion-intro {
   font-size: large;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.card-body-open {
+  max-height: 200px !important;
 }
