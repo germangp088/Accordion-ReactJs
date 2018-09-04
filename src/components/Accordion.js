@@ -38,10 +38,15 @@ class Accordion extends PureComponent {
 	}
 
   render() {
-    const { content }= this.state;
+    const { state, props }= this;
+    const { content }= state;
+    const { isFetching }= props.index;
 
     return (
       <div className="container">
+      { isFetching ?
+        <span className="fa fa-spinner fa-spin fa-3x"></span>
+        :
         <div className="Accordion">
           <header className="Accordion-header">
             <Title 
@@ -64,6 +69,7 @@ class Accordion extends PureComponent {
               })}
           </div>
         </div>
+      }
       </div>
     );
   }
