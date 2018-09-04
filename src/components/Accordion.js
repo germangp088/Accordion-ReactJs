@@ -1,24 +1,69 @@
 import React, { PureComponent } from 'react';
-import logo from '../logo.svg';
+import Title from "./Title";
+import Card from "./Card";
 import './Accordion.css';
 
 class Accordion extends PureComponent {
+	constructor(props) {
+			super(props);
+			this.state = {
+				content: []
+      };
+      this.onToggleAc = this.onToggleAc.bind(this);
+	}
 
 	componentDidMount() {
 		const { getContent } = this.props;
 		getContent();
   }
-  
+  	
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			content: nextProps.index.content
+		});
+  }
+
+	onToggleAc(id) {
+    const { content }= this.state;
+		const stateContent = JSON.parse(JSON.stringify((content)));
+		
+		const newContent = stateContent.map(l => {
+      l.collapsed = (l.id === id) ? true : false;
+			return l;
+    });
+
+		this.setState({
+			content: newContent
+		});
+	}
+
   render() {
+    const { content }= this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="container">
+        <div className="Accordion">
+          <header className="Accordion-header">
+            <Title 
+              className="Accordion-title"
+              title="Accordion ReactJS"
+            />
+          </header>
+          <div id="accordion" className="Accordion-intro">
+            {content.map((o, i) => {
+                return (
+                  <Card key={"Card_" + i} 
+                    id={o.id} 
+                    index={i} 
+                    title={o.title} 
+                    text={o.text} 
+                    collapsed={o.collapsed}
+                    onToggleAc={this.onToggleAc} 
+                  />
+                )
+              })}
+          </div>
+        </div>
       </div>
     );
   }
