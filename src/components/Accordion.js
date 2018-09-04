@@ -22,18 +22,15 @@ class Accordion extends PureComponent {
 			content: nextProps.index.content
 		});
   }
-  
 
 	onToggleAc(id) {
     const { content }= this.state;
-		const statecontent = JSON.parse(JSON.stringify((content)));
+		const stateContent = JSON.parse(JSON.stringify((content)));
 		
-		const newContent = statecontent.map(l => {
-			if (l.id == id){
-				l.collapsed = !l.collapsed;
-			}
+		const newContent = stateContent.map(l => {
+      l.collapsed = (l.id === id) ? true : false;
 			return l;
-		});
+    });
 
 		this.setState({
 			content: newContent
@@ -54,7 +51,7 @@ class Accordion extends PureComponent {
 				<div id="accordion"  className="Accordion-intro">
           {content.map((o, i) => {
               return (
-                <Card key={i} 
+                <Card key={"Card_" + i} 
                   id={o.id} 
                   index={i} 
                   title={o.title} 
