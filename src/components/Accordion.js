@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { PureComponent } from 'react';
+import logo from '../logo.svg';
+import './Accordion.css';
 
-class App extends Component {
+class Accordion extends PureComponent {
+
+	componentDidMount() {
+		const { getContent } = this.props;
+		getContent();
+  }
+  
   render() {
     return (
       <div className="App">
@@ -18,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Accordion;
