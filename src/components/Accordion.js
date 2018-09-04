@@ -41,26 +41,28 @@ class Accordion extends PureComponent {
     const { content }= this.state;
 
     return (
-      <div className="Accordion">
-        <header className="Accordion-header">
-          <Title 
-            className="Accordion-title"
-            title="Accordion ReactJS"
-          />
-        </header>
-				<div id="accordion"  className="Accordion-intro">
-          {content.map((o, i) => {
-              return (
-                <Card key={"Card_" + i} 
-                  id={o.id} 
-                  index={i} 
-                  title={o.title} 
-                  text={o.text} 
-                  collapsed={o.collapsed}
-                  onToggleAc={this.onToggleAc} 
-                />
-              )
-            })}
+      <div className="container">
+        <div className="Accordion">
+          <header className="Accordion-header">
+            <Title 
+              className="Accordion-title"
+              title="Accordion ReactJS"
+            />
+          </header>
+          <div id="accordion" className="Accordion-intro">
+            {content.map((o, i) => {
+                return (
+                  <Card key={"Card_" + i} 
+                    id={o.id} 
+                    index={i} 
+                    title={o.title} 
+                    text={o.text} 
+                    collapsed={o.collapsed}
+                    onToggleAc={this.onToggleAc} 
+                  />
+                )
+              })}
+          </div>
         </div>
       </div>
     );

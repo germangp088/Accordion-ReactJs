@@ -1,5 +1,5 @@
 .Accordion {
-  text-align: center;
+  text-align: left;
 }
 
 .Accordion-header {
@@ -10,10 +10,7 @@
 
 .Accordion-title {
   font-size: 1.5em;
-}
-
-.Accordion-intro {
-  font-size: large;
+  text-align: center;
 }
 
 @keyframes App-logo-spin {
